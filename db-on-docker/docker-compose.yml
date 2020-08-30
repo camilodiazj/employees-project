@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  pgredb-dev:
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: employees
+    ports:
+      - "5432:5432"
+
+  admin:
+    image: adminer
+    ports:
+      - 8080:8080
