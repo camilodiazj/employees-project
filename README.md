@@ -1,4 +1,4 @@
-# employees-tech-exam By Camilo Díaz Jaimes
+# Employees RestFull Project by Camilo Díaz Jaimes
 
 > employees-tech-exam
 
@@ -13,6 +13,8 @@ You will need the following services properly installed on your computer.
 * [Git](http://git-scm.com/)
 * [Gradle](https://gradle.org)
 * [Maven](https://maven.apache.org/)
+* [Docker](https://www.docker.com/)
+* [Docker-compose](https://docs.docker.com/compose/install/)
 
 ## Installation
 
@@ -34,15 +36,22 @@ You need [install Gradle](http://www.gradle.org/installation) or use a [Gradle w
 ```
 
 ## Run
-
+You need a Database to persist Data
+* To deploy Postgres Db:
+* Change into `cd db-on-docker`
 ```bash
-java -jar build/libs/bpop-reliefs-backend-core-*.jar
-TODO: Database
+docker-compose up
+```
+Run Application from base file `employees-project`
+```bash
+gradlew clean build
+
+java -jar build/libs/employees-tech-exam-0.0.1-SNAPSHOT.jar
 ```
 
 ## Error responses catalog
 
-* FinancialReliefs01: Customer not found
-* FinancialReliefs02: Customer has no active payroll loans
-* FinancialReliefs03: Customer has no active accounts
+* EmployeesError001: Error in Business data provided
+* EmployeesError998: Error in service transactions
+* EmployeesError999: Unexpected Error
 
