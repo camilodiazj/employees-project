@@ -36,6 +36,6 @@ public class ErrorHandlingControllerTest {
     ResponseEntity<ErrorResponse> result = errorHandlingController
         .handleBusinessException(new Exception("Array usual exception"));
 
-    Assert.assertEquals("Array usua exception",result.getBody().getDescription());
+    Assert.assertEquals("Array usual exception",result.getBody().getDescription());
   }
 }
