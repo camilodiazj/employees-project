@@ -3,6 +3,7 @@ package com.tech.exam.employees.controller;
 
 import com.tech.exam.employees.api.model.EmployeeRequest;
 import com.tech.exam.employees.api.model.EmployeeResponse;
+import com.tech.exam.employees.api.model.SuccessfulResponse;
 import com.tech.exam.employees.controller.definitions.EmployeeDefinition;
 import com.tech.exam.employees.exceptions.ServiceException;
 import com.tech.exam.employees.repository.entity.Employee;
@@ -35,26 +36,29 @@ public class EmployeeController implements EmployeeDefinition {
   }
 
   @Override
-  public ResponseEntity<String> create(@Valid EmployeeRequest employee) throws ServiceException {
+  public ResponseEntity<SuccessfulResponse> create(@Valid EmployeeRequest employee)
+      throws ServiceException {
     employeeService.create(employee);
-    return ResponseEntity.created(URI.create("/employees/")).build();
+    return ResponseEntity.created(URI.create("/employees/"))
+        .body(SuccessfulResponse.createdResponse("Employee Created"));
   }
 
   @Override
-  public ResponseEntity<String> update(Employee employee) throws ServiceException {
+  public ResponseEntity<SuccessfulResponse> update(Employee employee) throws ServiceException {
     employeeService.update(employee);
-    return ResponseEntity.ok().build();
+    return ResponseEntity.ok().body(SuccessfulResponse.okResponse("Employee Updated"));
   }
 
   @Override
-  public ResponseEntity<String> setBoss(Long idBoss, Long idEmployee) throws ServiceException {
+  public ResponseEntity<SuccessfulResponse> setBoss(Long idBoss, Long idEmployee)
+      throws ServiceException {
     employeeService.setBoss(idBoss, idEmployee);
-    return ResponseEntity.ok().build();
+    return ResponseEntity.ok().body(SuccessfulResponse.okResponse("Employee updated"));
   }
 
   @Override
-  public ResponseEntity<String> deleteById(Long id) throws ServiceException {
+  public ResponseEntity<SuccessfulResponse> deleteById(Long id) throws ServiceException {
     employeeService.delete(id);
-    return ResponseEntity.ok().build();
+    return ResponseEntity.ok().body(SuccessfulResponse.okResponse("Employee deleted"));
   }
 }

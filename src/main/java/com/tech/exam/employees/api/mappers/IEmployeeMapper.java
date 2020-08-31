@@ -10,7 +10,8 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IEmployeeMapper {
 
-  @Mapping(source = "boss.fullName", target = "boss")
+  @Mapping(source = "boss.fullName", target = "boss.fullName")
+  @Mapping(source = "boss.id", target = "boss.id")
   EmployeeResponse employeeEntityToEmployeeResponse(Employee employeeEntity);
 
   Employee employeeRequestToEmployeeEntity(EmployeeRequest employeeRequest);
