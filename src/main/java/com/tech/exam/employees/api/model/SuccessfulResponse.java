@@ -17,6 +17,6 @@ public class SuccessfulResponse {
   }
 
   public static SuccessfulResponse createdResponse(String message) {
-    return new SuccessfulResponse(true,HttpStatus.OK, message);
+    return new SuccessfulResponse(true,HttpStatus.CREATED, message);
   }
 }
