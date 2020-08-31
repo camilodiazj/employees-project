@@ -15,7 +15,7 @@ public class ErrorHandlingController extends ResponseEntityExceptionHandler {
   @ExceptionHandler(BusinessException.class)
   public ResponseEntity<ErrorResponse> handleBusinessException(BusinessException e) {
     return new ResponseEntity<>(new ErrorResponse("EmployeesError001", e.getMessage()),
-        HttpStatus.BAD_REQUEST);
+        HttpStatus.PARTIAL_CONTENT);
   }
 
   @ExceptionHandler(ServiceException.class)
