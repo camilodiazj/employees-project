@@ -2,6 +2,7 @@ package com.tech.exam.employees.controller;
 
 import com.tech.exam.employees.api.model.EmployeeRequest;
 import com.tech.exam.employees.api.model.EmployeeResponse;
+import com.tech.exam.employees.api.model.SuccessfulResponse;
 import com.tech.exam.employees.exceptions.ServiceException;
 import com.tech.exam.employees.repository.entity.Employee;
 import com.tech.exam.employees.service.IEmployeeService;
@@ -65,7 +66,7 @@ public class EmployeeControllerTest {
   @Test
   public void shouldCreate() throws ServiceException {
 
-    ResponseEntity<String> result = employeeController
+    ResponseEntity<SuccessfulResponse> result = employeeController
         .create(Mockito.any(EmployeeRequest.class));
 
     Assert.assertNotNull(result);
@@ -75,7 +76,7 @@ public class EmployeeControllerTest {
   @Test
   public void shouldUpdate() throws ServiceException {
 
-    ResponseEntity<String> result = employeeController.update(Mockito.any(Employee.class));
+    ResponseEntity<SuccessfulResponse> result = employeeController.update(Mockito.any(Employee.class));
 
     Assert.assertNotNull(result);
     Assert.assertEquals(HttpStatus.OK, result.getStatusCode());
@@ -84,7 +85,7 @@ public class EmployeeControllerTest {
   @Test
   public void shouldSetBoss() throws ServiceException {
 
-    ResponseEntity<String> result = employeeController.setBoss(Mockito.anyLong(),Mockito.anyLong());
+    ResponseEntity<SuccessfulResponse> result = employeeController.setBoss(Mockito.anyLong(),Mockito.anyLong());
 
     Assert.assertNotNull(result);
     Assert.assertEquals(HttpStatus.OK, result.getStatusCode());
@@ -93,7 +94,7 @@ public class EmployeeControllerTest {
   @Test
   public void shouldDeleteById() throws ServiceException {
 
-    ResponseEntity<String> result = employeeController.deleteById(Mockito.anyLong());
+    ResponseEntity<SuccessfulResponse> result = employeeController.deleteById(Mockito.anyLong());
 
     Assert.assertNotNull(result);
     Assert.assertEquals(HttpStatus.OK, result.getStatusCode());

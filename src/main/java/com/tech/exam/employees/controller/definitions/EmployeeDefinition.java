@@ -2,6 +2,7 @@ package com.tech.exam.employees.controller.definitions;
 
 import com.tech.exam.employees.api.model.EmployeeRequest;
 import com.tech.exam.employees.api.model.EmployeeResponse;
+import com.tech.exam.employees.api.model.SuccessfulResponse;
 import com.tech.exam.employees.exceptions.ServiceException;
 import com.tech.exam.employees.repository.entity.Employee;
 import java.util.List;
@@ -22,15 +23,15 @@ public interface EmployeeDefinition {
   ResponseEntity<EmployeeResponse> findById(@PathVariable Long id) throws ServiceException;
 
   @PostMapping
-  ResponseEntity<String> create(@RequestBody EmployeeRequest employee) throws ServiceException;
+  ResponseEntity<SuccessfulResponse> create(@RequestBody EmployeeRequest employee) throws ServiceException;
 
   @PutMapping
-  ResponseEntity<String> update(@RequestBody Employee employee) throws ServiceException;
+  ResponseEntity<SuccessfulResponse> update(@RequestBody Employee employee) throws ServiceException;
 
   @PutMapping("/boss")
-  ResponseEntity<String> setBoss(@RequestParam Long idBoss, @RequestParam Long idEmployee)
+  ResponseEntity<SuccessfulResponse> setBoss(@RequestParam Long idBoss, @RequestParam Long idEmployee)
       throws ServiceException;
 
   @DeleteMapping("/{id}")
-  ResponseEntity<String> deleteById(@PathVariable Long id) throws ServiceException;
+  ResponseEntity<SuccessfulResponse> deleteById(@PathVariable Long id) throws ServiceException;
 }
